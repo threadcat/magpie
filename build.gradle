@@ -1,0 +1,31 @@
+import java.time.LocalDateTime
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
+
+plugins {
+    id 'java'
+}
+
+group 'threadcat'
+version LocalDateTime.now(ZoneOffset.UTC).format(DateTimeFormatter.ofPattern("yyyyMMdd"))
+
+sourceCompatibility = 14
+targetCompatibility = 14
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation(
+            'org.junit.jupiter:junit-jupiter:5.6.0',
+            'org.mockito:mockito-junit-jupiter:3.3.0',
+            'ch.qos.logback:logback-classic:1.2.3'
+    )
+    compile files(
+            'lib/watch-service-latency-20200531.jar',
+    )
+    implementation(
+            'org.slf4j:slf4j-api:1.7.26'
+    )
+}
